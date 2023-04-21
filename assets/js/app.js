@@ -10,6 +10,11 @@ createApp({
             dDice1: 1,
             dDice2: 1,
             dDice3: 1,
+            //the roll totall
+            pTotal: 0,
+            dTotal: 0,
+            //score for the player
+            score: 200,
 
         }
     },
@@ -26,7 +31,12 @@ createApp({
             this.dDice1 = this.getRandomDice()
             this.dDice2 = this.getRandomDice()
             this.dDice3 = this.getRandomDice()
+
+            this.pTotal = this.pDice1 + this.pDice2 + this.pDice3;
+            this.dTotal = this.dDice1 + this.dDice2 + this.dDice3;
         },
+
+
         //method to chang the image of the dice to the currant value
         diceImg(dN) {
             let url = ''

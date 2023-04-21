@@ -18,24 +18,28 @@
             <div class="row ">
                 <div class="col-12 bg-success">
                     <span class="fs-1 fw-bold text-light text-uppercase ">score :</span> <span
-                        class="fs-1 fst-italic text-light "> 200</span>
+                        class="fs-1 fst-italic text-light "> {{score}}</span>
 
                 </div>
                 <div class="col-6 bg-warning p-2">
-                    <span class="display-3 fw-blod text-success">Player</span>
-                    <img class="img-fulid m-3" :src="diceImg('p1')" alt="the dice img">
+                    <span class="display-3 d-block fw-blod text-success">Player</span>
+                    <img class="img-fulid col-4 m-3" :src="diceImg('p1')" alt="the dice img">
+                    <img class="img-fulid col-4 m-3" :src="diceImg('p2')" alt="the dice img"><img class="img-fulid m-3"
+                        :src="diceImg('p3')" alt="the dice img">
+                    <span> {{pTotal}} </span>
                 </div>
                 <div class="col-6 bg-danger p-2">
-                    <span class="display-3 text-warning">Dealer</span>
-                    <img class="img-fulid m-3" :src="diceImg('d1')" alt="the dice 
-                    img">
-                    <span> {{dDice1}} </span>
+                    <span class="display-3 d-block text-warning">Dealer</span>
+                    <img class="img-fulid col-4 m-3" :src="diceImg('d1')" alt="the dice img">
+                    <img class="img-fulid col-4 m-3" :src="diceImg('d2')" alt="the dice img"><img class="img-fulid m-3"
+                        :src="diceImg('d3')" alt="the dice img">
+                    <span> {{dTotal}} </span>
                 </div>
             </div>
             <div class="row m-4">
                 <label for="betting" class="fs-3">pot your betting</label>
-                <input type="number" class="form-control" name="betting" id="betting" value="0"> <button
-                    class="btn btn-primary">
+                <input type="number" min="0" :max="score" class="form-control" name="betting" id="betting" value="0">
+                <button class="btn btn-primary">
                     bet</button>
             </div>
 
