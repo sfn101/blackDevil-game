@@ -1,0 +1,17 @@
+body {
+  background-color: #232026;
+}
+
+.meanColor {
+  color: #920fc0;
+}
+
+.playerBG {
+  background: linear-gradient(180deg, #211c26 0%, #1a0430 100%);
+}
+.dealerBG {
+  background: linear-gradient(180deg, #1e0932 0%, #0d0812 100%);
+}
+.fs-max {
+  font-size: 200px;
+}

@@ -10,58 +10,70 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./assets/css/mean.css" />
     <title>Black Devil</title>
   </head>
 
   <body>
     <div id="app">
-      <div class="container">
+      <div class="container-lg">
         <div class="row">
-          <div class="col-12 bg-success">
-            <span class="fs-1 fw-bold text-light text-uppercase">score :</span>
-            <span class="fs-1 fst-italic text-light"> {{score}}</span>
+          <div class="col-12 p-0">
+            <span class="fs-1 fw-bold text-light text-uppercase">score : </span>
+            <span class="fs-1 fw-bold fst-italic meanColor"> {{score}}</span
+            ><span class="text-light fs-1">$</span>
           </div>
-          <div class="col-6 bg-warning p-2">
-            <span class="display-3 d-block fw-blod text-success">Player</span>
-            <img
-              class="img-fulid col-4 m-3"
-              :src="diceImg('p1')"
-              alt="the dice img"
-            />
-            <img
-              class="img-fulid col-4 m-3"
-              :src="diceImg('p2')"
-              alt="the dice img"
-            /><img
-              class="img-fulid m-3"
-              :src="diceImg('p3')"
-              alt="the dice img"
-            />
-            <span> {{pTotal}} </span>
+          <div class="d-flex flex-column col-6 playerBG p-2 py-5">
+            <div class="d-flex justify-content-around px-3">
+              <img
+                class="img-fulid col-3"
+                :src="diceImg('p1')"
+                alt="the dice img"
+              />
+              <img
+                class="img-fulid col-3"
+                :src="diceImg('p2')"
+                alt="the dice img"
+              /><img
+                class="img-fulid col-3"
+                :src="diceImg('p3')"
+                alt="the dice img"
+              />
+            </div>
+            <span class="text-light fw-bold fs-max text-center">
+              {{pTotal}}
+            </span>
+            <span class="display-3 fw-blod meanColor text-center">Player</span>
           </div>
-          <div class="col-6 bg-danger p-2">
-            <span class="display-3 d-block text-warning">Dealer</span>
-            <img
-              class="img-fulid col-4 m-3"
-              :src="diceImg('d1')"
-              alt="the dice img"
-            />
-            <img
-              class="img-fulid col-4 m-3"
-              :src="diceImg('d2')"
-              alt="the dice img"
-            /><img
-              class="img-fulid m-3"
-              :src="diceImg('d3')"
-              alt="the dice img"
-            />
-            <span> {{dTotal}} </span>
+          <div class="col-6 d-flex flex-column dealerBG p-2 py-5">
+            <span class="display-2 text-light text-uppercase text-center"
+              >{{resultMessage}}</span
+            >
+            <span class="text-light fw-bold fs-max text-center">
+              {{dTotal}}
+            </span>
+            <span class="display-3 d-block meanColor mb-4 text-center"
+              >Dealer</span
+            >
+            <div class="d-flex justify-content-around px-3">
+              <img
+                class="img-fulid col-3"
+                :src="diceImg('d1')"
+                alt="the dice img"
+              />
+              <img
+                class="img-fulid col-3"
+                :src="diceImg('d2')"
+                alt="the dice img"
+              /><img
+                class="img-fulid col-3"
+                :src="diceImg('d3')"
+                alt="the dice img"
+              />
+            </div>
           </div>
         </div>
         <div class="row m-4">
-          <span class="display-2 text-uppercase text-center"
-            >{{resultMessage}}</span
-          >
           <label for="betting" class="fs-3">Put Your betting : {{bet}}</label>
           <input
             type="number"

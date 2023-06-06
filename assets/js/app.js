@@ -14,7 +14,7 @@ createApp({
             pTotal: 0,
             dTotal: 0,
             //score for the player
-            score: 200,
+            score: 500,
             //the bet
             bet: 0,
             resultMessage: '',
@@ -71,9 +71,14 @@ createApp({
         },
         // the roll function 
         roll() {
-            this.dices();
-            this.dicesTotal();
-            this.result();
+            if (this.bet > 0) {
+                this.dices();
+                this.dicesTotal();
+                this.result();
+            }
+            else {
+                this.resultMessage = 'you need to set a Bet '
+            }
         },
 
 
