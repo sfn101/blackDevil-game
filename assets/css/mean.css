@@ -5,6 +5,9 @@ body {
 .meanColor {
   color: #920fc0;
 }
+.meanColorBg {
+  color: #920fc0;
+}
 
 .playerBG {
   background: linear-gradient(180deg, #211c26 0%, #1a0430 100%);
@@ -14,4 +17,12 @@ body {
 }
 .fs-max {
   font-size: 200px;
+}
+
+.border-mean {
+  border-color: #920fc0 !important;
+}
+
+.vh-90 {
+  height: 90vh;
 }
