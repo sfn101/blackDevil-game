@@ -15,49 +15,108 @@
   <div id="app">
     <div class="container-md  ">
       <div class="row m-0 p-0   ">
-        <div class="col-12 p-0">
+        <div class="col p-0">
+          <h1 class="display-1 text-light mt-3 fw-bold text-center">Black Devil</h1>
           <span class="fs-1 fw-bold text-light text-uppercase">score : </span>
-          <span class="fs-1 fw-bold fst-italic meanColor"> {{score}}</span><span class="text-light fs-1">$</span>
+          <span class="fs-1 fw-bold fst-italic meanColor"> {{score - bet}}</span><span class="text-light fs-1">$</span>
         </div>
-        <div class="row m-0 p-0 border border-mean vh-90 ">
-          <div class="d-flex flex-column col-6 playerBG py-5">
-            <div class="d-flex justify-content-around">
-              <img class="img-fulid col-3" :src="diceImg('p1')" alt="the dice img" />
-              <img class="img-fulid col-3" :src="diceImg('p2')" alt="the dice img" /><img class="img-fulid col-3"
-                :src="diceImg('p3')" alt="the dice img" />
+        <div class="row row-cols-2  p-3 mx-auto border border-mean  position-relative ">
+          <div class="bg-container row row-cols-2 col-12 p-0 ">
+
+            <div class="playerBG"></div>
+            <div class="dealerBG "></div>
+
+          </div>
+
+          <div class=" d-flex justify-content-around ">
+            <img class="img-fulid col-3" :src="diceImg('p1')" alt="the dice img" />
+            <img class="img-fulid col-3" :src="diceImg('p2')" alt="the dice img" />
+            <img class="img-fulid col-3" :src="diceImg('p3')" alt="the dice img" />
+          </div>
+          <div class="display-6 text-light text-uppercase text-center m-auto">
+            {{resultMessage}}</div>
+          <div class="my-3 d-flex flex-column">
+            <span class="text-light fw-bold fs-max text-center">
+              {{pTotal}}
+            </span>
+            <span class=" display-3 fw-blod meanColor text-center mb-4">Player</span>
+          </div>
+          <div class="my-3 d-flex flex-column">
+            <span class="text-light fw-bold fs-max text-center">
+              {{dTotal}}
+            </span>
+            <span class="display-3 meanColor text-center">Dealer</span>
+          </div>
+          <div class="col-12">
+
+            <button
+              class="  btn btn-lg btn-mean position-relative  fw-bold px-5 fs-1 start-50  translate-middle rounded-pill"
+              v-on:click="roll()">
+              Roll
+            </button>
+          </div>
+          <div class=" my-auto ">
+            <div class="d-flex justify-content-between">
+
+              <span class="text-light  fs-4 text-uppercase align-self-center">your bet</span>
+              <div class="d-flex col-3 flex-column flex-md-row justify-content-end">
+
+                <span class="fw-bold fs-4 text-light text-center px-2 mt-md-2 bet-btn no-select "
+                  v-on:click="addBet()">&#9650</span>
+                <span class="text-light  rounded-3 d-inline fw-bold fs-4 m-0 bet-bg">
+                  {{bet}}$
+                </span>
+                <span class="fw-bold fs-4 text-light text-center px-2 mt-md-2 bet-btn no-select "
+                  v-on:click="subBet()">&#9660</span>
+              </div>
             </div>
-            <div class="m-auto d-flex flex-column">
-              <span class="text-light fw-bold fs-max text-center">
-                {{pTotal}}
-              </span>
-              <span class="display-3 fw-blod meanColor text-center mb-4">Player</span>
-            </div>
-            <div class="d-flex flex-column px-3">
-              <input type="number" min="0" :max="score" class="form-control" name="betting" id="betting"
+            <div>
+
+              <label for="betting" class="form-label d-none">betting slider</label>
+              <input type="range" min="0" :max="score" class="form-range" step="1" name="betting" id="betting"
                 v-model="bet" />
-              <button class="btn btn-lg btn-success" v-on:click="roll()">
-                Roll The Dice
-              </button>
+              <div class="d-flex justify-content-around">
+
+                <button class="btn btn-outline-light" v-on:click="setBet(5)">20%</button>
+                <button class="btn btn-outline-light" v-on:click="setBet(2)">50%</button><button
+                  class="btn btn-outline-light" v-on:click="setBet(1.25)">80%</button>
+              </div>
             </div>
           </div>
-          <div class="col-6 d-flex flex-column-reverse dealerBG p-2 py-5">
-            <div class="d-flex justify-content-around px-3">
-              <img class="img-fulid col-3" :src="diceImg('d1')" alt="the dice img" />
-              <img class="img-fulid col-3" :src="diceImg('d2')" alt="the dice img" /><img class="img-fulid col-3"
-                :src="diceImg('d3')" alt="the dice img" />
-            </div>
-            <div class="m-auto d-flex flex-column">
-              <span class="text-light fw-bold fs-max text-center">
-                {{dTotal}}
-              </span>
-              <span class="display-3 meanColor text-center">Dealer</span>
-            </div>
-            <span class="display-6 text-light text-uppercase text-center">{{resultMessage}}</span>
+          <div class="d-flex justify-content-around ">
+            <img class="img-fulid col-3" :src="diceImg('d1')" alt="the dice img" />
+            <img class="img-fulid col-3" :src="diceImg('d2')" alt="the dice img" />
+            <img class="img-fulid col-3" :src="diceImg('d3')" alt="the dice img" />
           </div>
+
+        </div>
+        <div>
+          <h2 class="display-3 text-light mt-4">The Rules &#9660</h2>
+          <p class=" fs-2 lead text-light text-capitalize">
+            this game is inspired by blackjack, the goal is you play against a dealer to get 12 or as close to it
+            without passing
+            it.
+
+          </p>
+          <ol class="text-light">
+            <li class="fs-2">you have to set a bet before you play if you win you win your bet you start the game with a
+              credet of 500$ don't lose it
+            </li>
+            <li class="fs-2">if your total dice is equal to 12 or less you win
+            </li>
+            <li class="fs-2">if the dealer has a bigger total than you but not more than 12 you lose
+            </li>
+            <li class="fs-2">if the dealer is over 12 you win eminently
+            </li>
+            <li class="fs-2">if you and the dealer have equle total you lose noting
+            </li>
+            <li class="fs-2">if you get three dice each one is a number four you win double your bet</li>
+          </ol>
         </div>
       </div>
     </div>
   </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

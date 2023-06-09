@@ -51,16 +51,19 @@ createApp({
             }
             //wining cenditions
             else if (this.pTotal <= 12 && this.dTotal < this.pTotal || this.dTotal > 12 && this.pTotal <= 12) {
-                this.score += this.bet;
+                console.log(this.bet, this.score)
+                console.log(typeof this.bet);
+                this.score += parseInt(this.bet);
                 this.bet = 0;
                 this.resultMessage = 'congratulations you win play more'
+                console.log(this.bet, this.score);
             }
             //draw cenditions
             else if (this.pTotal <= 12 && this.dTotal === this.pTotal) {
                 this.resultMessage = 'You Draw with the dealer try agin'
             }
             else if (this.pDice1 === 4 && this.pDice2 === 4 && this.pDice3 === 4 && this.dTotal < 12) {
-                this.score += this.bet * 2;
+                this.score += parseInt(this.bet) * 2;
                 this.bet = 0;
                 this.resultMessage = 'congratulations you win double play more'
             }
@@ -71,6 +74,7 @@ createApp({
         },
         // the roll function 
         roll() {
+
             if (this.bet > 0) {
                 this.dices();
                 this.dicesTotal();
@@ -80,7 +84,19 @@ createApp({
                 this.resultMessage = 'you need to set a Bet '
             }
         },
-
+        addBet() {
+            if (this.bet < this.score) {
+                this.bet += 1;
+            }
+        },
+        subBet() {
+            if (this.bet > 0) {
+                this.bet -= 1;
+            }
+        },
+        setBet(bet) {
+            this.bet = this.score / bet;
+        },
 
         //method to chang the image of the dice to the currant value
         diceImg(dN) {

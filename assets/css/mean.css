@@ -11,18 +11,74 @@ body {
 
 .playerBG {
   background: linear-gradient(180deg, #211c26 0%, #1a0430 100%);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* <- here it is */
+  /* height: 90vh; */
+
+  /*   position: absolute;
+  align-self: center;
+  margin-left: -1rem; */
 }
 .dealerBG {
   background: linear-gradient(180deg, #1e0932 0%, #0d0812 100%);
+  /* height: 90vh; */
+}
+
+.bet-bg {
+  background-color: #3b1d57;
+  padding: 10px;
+}
+.bg-container {
+  position: absolute;
+  align-self: center;
+  margin-left: -1rem;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
 }
 .fs-max {
-  font-size: 200px;
+  font-size: 10em;
+}
+@media screen and (max-width: 600px) {
+  .fs-max {
+    font-size: 5em;
+  }
 }
 
 .border-mean {
   border-color: #920fc0 !important;
 }
 
-.vh-90 {
-  height: 90vh;
+.btn-mean {
+  background-color: #920fc0;
+  color: #fff;
+  border: 3px solid #fff;
+}
+
+.btn-mean:hover {
+  background-color: #1a0430;
+  color: #fff;
+  border: 3px solid #fff;
+}
+
+.form-range::-webkit-slider-thumb {
+  background: #920fc0;
+}
+.form-range::-moz-range-thumb {
+  background: #920fc0;
+}
+.form-range::-ms-thumb {
+  background: #920fc0;
+}
+
+.bet-btn:hover {
+  color: #920fc0 !important;
+  cursor: pointer;
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
